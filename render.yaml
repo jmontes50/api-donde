@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: gastro-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm ci && npm run seed
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: DB_PATH
+        value: ./data/gastro.db
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: JWT_SECRET
+        generateValue: true

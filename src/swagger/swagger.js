@@ -36,8 +36,10 @@ Obtén el token haciendo POST a \`/api/auth/login\` con las credenciales de admi
     },
     servers: [
       {
-        url: 'http://localhost:4000/api',
-        description: 'Servidor de desarrollo local',
+        url: process.env.RENDER_EXTERNAL_URL
+          ? `${process.env.RENDER_EXTERNAL_URL}/api`
+          : `http://localhost:${process.env.PORT || 4000}/api`,
+        description: process.env.RENDER_EXTERNAL_URL ? 'Render.com' : 'Servidor de desarrollo local',
       },
     ],
     components: {
