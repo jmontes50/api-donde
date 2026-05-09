@@ -1,0 +1,15 @@
+node_modules/
+.env
+
+# BD y archivos temporales de SQLite — no versionar
+data/*.db
+data/*.db-shm
+data/*.db-wal
+logs/*.log
+
+# Sí versionar la estructura de carpetas vacías
+!data/.gitkeep
+!logs/.gitkeep
+
+.DS_Store
+ecosystem.config.local.js
