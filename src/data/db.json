@@ -1,0 +1,794 @@
+{
+  "districts": [
+    {
+      "id": 1,
+      "name": "Cercado",
+      "description": "Centro histórico de Arequipa, declarado Patrimonio de la Humanidad. Corazón cultural y gastronómico de la ciudad.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Yanahuara",
+      "description": "Distrito residencial y turístico famoso por su mirador con vista al volcán Misti y sus picanterías tradicionales.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "Cayma",
+      "description": "Distrito al norte de la ciudad con casonas coloniales y restaurantes con vista panorámica a los volcanes.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "name": "Sachaca",
+      "description": "Conocido por sus campiñas y el tradicional molino. Concentra algunas de las picanterías más antiguas de Arequipa.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "name": "Miraflores",
+      "description": "Distrito popular con amplia oferta gastronómica accesible y mercados locales muy concurridos.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 6,
+      "name": "Paucarpata",
+      "description": "Uno de los distritos más grandes de Arequipa, con tradición en chicherías y comida de mercado.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 7,
+      "name": "Cerro Colorado",
+      "description": "Distrito en expansión al norte, con centros comerciales y restaurantes modernos junto a opciones tradicionales.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 8,
+      "name": "José Luis Bustamante y Rivero",
+      "description": "Distrito residencial del sur con restaurantes familiares, pollerías y cevicherías de barrio.",
+      "created_at": "2024-01-01 00:00:00"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Picantería",
+      "description": "Restaurantes tradicionales que sirven platos típicos arequipeños en ambiente familiar. Son el símbolo gastronómico de la región.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Cevichería",
+      "description": "Especialistas en ceviche y preparaciones a base de pescados y mariscos frescos del litoral peruano.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "Pollería",
+      "description": "Restaurantes especializados en pollo a la brasa, plato más popular del Perú según encuestas nacionales.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "name": "Chifa",
+      "description": "Restaurantes de cocina chino-peruana, una fusión única en el mundo nacida de la migración cantonesa al Perú.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "name": "Pizzería",
+      "description": "Pizzerías artesanales e italianas adaptadas al gusto arequipeño, con ingredientes locales.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 6,
+      "name": "Café",
+      "description": "Cafeterías y cafés con opciones de desayuno, brunch, repostería y bebidas de especialidad.",
+      "created_at": "2024-01-01 00:00:00"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "La Nueva Palomino",
+      "description": "Picantería tradicional con más de 50 años de historia, considerada una de las mejores de Arequipa. Sus rocoto relleno y chupe de camarones son legendarios.",
+      "address": "Leoncio Prado 122",
+      "phone": "054-252393",
+      "image_url": "https://picsum.photos/seed/picanteria-arequipa-sillar/600/400",
+      "opening_time": "12:00",
+      "closing_time": "17:00",
+      "district_id": 2,
+      "category_id": 1,
+      "district_name": "Yanahuara",
+      "category_name": "Picantería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Sol de Mayo",
+      "description": "Emblemática picantería en plena campiña de Yanahuara. Ambiente arequipeño auténtico con vista al Misti desde sus mesas al aire libre.",
+      "address": "Jerusalén 207",
+      "phone": "054-254148",
+      "image_url": "https://picsum.photos/seed/campiña-yanahuara-misti/600/400",
+      "opening_time": "11:00",
+      "closing_time": "17:00",
+      "district_id": 2,
+      "category_id": 1,
+      "district_name": "Yanahuara",
+      "category_name": "Picantería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "La Capitana",
+      "description": "Picantería familiar reconocida por su adobo arequipeño y chicharrones. Funciona desde 1978 en el corazón de Sachaca.",
+      "address": "Av. Fernandini 215",
+      "phone": "054-271832",
+      "image_url": "https://picsum.photos/seed/picanteria-sachaca-colonial/600/400",
+      "opening_time": "08:00",
+      "closing_time": "16:00",
+      "district_id": 4,
+      "category_id": 1,
+      "district_name": "Sachaca",
+      "category_name": "Picantería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "name": "El Rancho",
+      "description": "Picantería con amplio jardín, ideal para grupos. Especialidad en ocopa arequipeña y pastel de papa.",
+      "address": "Calle Peral 301",
+      "phone": "054-265410",
+      "image_url": "https://picsum.photos/seed/jardin-arequipa-campiña/600/400",
+      "opening_time": "11:30",
+      "closing_time": "17:00",
+      "district_id": 4,
+      "category_id": 1,
+      "district_name": "Sachaca",
+      "category_name": "Picantería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "name": "La Lucila",
+      "description": "Reconocida picantería del centro histórico. Ganadora de varios premios gastronómicos regionales por su sazón tradicional.",
+      "address": "Calle Mercaderes 229",
+      "phone": "054-213764",
+      "image_url": "https://picsum.photos/seed/centro-historico-arequipa/600/400",
+      "opening_time": "11:00",
+      "closing_time": "16:00",
+      "district_id": 1,
+      "category_id": 1,
+      "district_name": "Cercado",
+      "category_name": "Picantería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 6,
+      "name": "Tradiciones Arequipeñas",
+      "description": "Ambiente rústico con paredes de sillar blanco. Sirven el desayuno tradicional: adobo con pan de tres puntas todos los domingos.",
+      "address": "Av. Dolores 111",
+      "phone": "054-289543",
+      "image_url": "https://picsum.photos/seed/sillar-blanco-arequipa-rustico/600/400",
+      "opening_time": "07:00",
+      "closing_time": "15:00",
+      "district_id": 8,
+      "category_id": 1,
+      "district_name": "José Luis Bustamante y Rivero",
+      "category_name": "Picantería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 7,
+      "name": "El Muelle",
+      "description": "Cevichería de referencia en Arequipa. Traen ingredientes frescos tres veces por semana directamente desde el puerto de Camaná.",
+      "address": "Av. Ejército 406",
+      "phone": "054-231847",
+      "image_url": "https://picsum.photos/seed/cevicheria-mariscos-costa/600/400",
+      "opening_time": "11:00",
+      "closing_time": "17:00",
+      "district_id": 2,
+      "category_id": 2,
+      "district_name": "Yanahuara",
+      "category_name": "Cevichería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 8,
+      "name": "Mar y Tierra",
+      "description": "Fusión entre los sabores del mar y la cocina arequipeña. Su tiradito de pejerrey con salsa de ocopa es único en la ciudad.",
+      "address": "Calle Melgar 112",
+      "phone": "054-208931",
+      "image_url": "https://picsum.photos/seed/fusion-pescado-arequipa/600/400",
+      "opening_time": "12:00",
+      "closing_time": "17:00",
+      "district_id": 1,
+      "category_id": 2,
+      "district_name": "Cercado",
+      "category_name": "Cevichería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 9,
+      "name": "La Cevichería del Puerto",
+      "description": "Local popular en Miraflores con precios accesibles. Conocida por sus porciones generosas y leche de tigre potente.",
+      "address": "Av. Mariscal Castilla 780",
+      "phone": "054-432156",
+      "image_url": "https://picsum.photos/seed/puerto-mariscos-fresco/600/400",
+      "opening_time": "11:30",
+      "closing_time": "16:30",
+      "district_id": 5,
+      "category_id": 2,
+      "district_name": "Miraflores",
+      "category_name": "Cevichería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 10,
+      "name": "Don Pollo",
+      "description": "Pollería familiar con más de 30 años en el mercado arequipeño. Su pollo a la brasa con papas fritas y ensalada es el favorito del barrio.",
+      "address": "Av. Aviación 567",
+      "phone": "054-471230",
+      "image_url": "https://picsum.photos/seed/pollo-brasa-carbon/600/400",
+      "opening_time": "12:00",
+      "closing_time": "22:00",
+      "district_id": 7,
+      "category_id": 3,
+      "district_name": "Cerro Colorado",
+      "category_name": "Pollería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 11,
+      "name": "El Brasero",
+      "description": "Pollería con horno de leña tradicional. El aroma que sale a la calle a las 11am es imposible de ignorar.",
+      "address": "Calle Alfonso Ugarte 234",
+      "phone": "054-455678",
+      "image_url": "https://picsum.photos/seed/horno-leña-polleria/600/400",
+      "opening_time": "11:00",
+      "closing_time": "22:00",
+      "district_id": 6,
+      "category_id": 3,
+      "district_name": "Paucarpata",
+      "category_name": "Pollería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 12,
+      "name": "Pollo Real",
+      "description": "Cadena local arequipeña con tres locales en la ciudad. Relación calidad-precio muy valorada por las familias del distrito.",
+      "address": "Av. Los Incas 890",
+      "phone": "054-398123",
+      "image_url": "https://picsum.photos/seed/familia-polleria-arequipa/600/400",
+      "opening_time": "12:00",
+      "closing_time": "23:00",
+      "district_id": 8,
+      "category_id": 3,
+      "district_name": "José Luis Bustamante y Rivero",
+      "category_name": "Pollería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 13,
+      "name": "China House",
+      "description": "Chifa de segunda generación, fundado por la familia Wong. Ambiente tradicional con mesas redondas y dim sum los domingos.",
+      "address": "Calle San José 145",
+      "phone": "054-223456",
+      "image_url": "https://picsum.photos/seed/chifa-wok-asia/600/400",
+      "opening_time": "12:00",
+      "closing_time": "22:00",
+      "district_id": 1,
+      "category_id": 4,
+      "district_name": "Cercado",
+      "category_name": "Chifa",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 14,
+      "name": "Dragón de Oro",
+      "description": "Fusión chino-arequipeña que incorpora ingredientes locales como el rocoto y la quinua en platos clásicos del chifa.",
+      "address": "Av. Pumacahua 678",
+      "phone": "054-381234",
+      "image_url": "https://picsum.photos/seed/fusion-chino-andino/600/400",
+      "opening_time": "11:30",
+      "closing_time": "22:30",
+      "district_id": 3,
+      "category_id": 4,
+      "district_name": "Cayma",
+      "category_name": "Chifa",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 15,
+      "name": "Pizzería Quattro",
+      "description": "Pizzería artesanal con horno de piedra importado de Italia. Sus ingredientes locales (queso de Cayma, orégano de Cotahuasi) le dan un sabor único.",
+      "address": "Calle Álvarez Thomas 321",
+      "phone": "054-251890",
+      "image_url": "https://picsum.photos/seed/pizza-artesanal-horno-piedra/600/400",
+      "opening_time": "18:00",
+      "closing_time": "23:00",
+      "district_id": 2,
+      "category_id": 5,
+      "district_name": "Yanahuara",
+      "category_name": "Pizzería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 16,
+      "name": "La Piazza",
+      "description": "Ambiente italiano en el centro histórico. Perfecta para cenas con vista a la Plaza de Armas después de un día de turismo.",
+      "address": "Portal de Flores 142",
+      "phone": "054-201234",
+      "image_url": "https://picsum.photos/seed/plaza-armas-arequipa-noche/600/400",
+      "opening_time": "12:00",
+      "closing_time": "23:00",
+      "district_id": 1,
+      "category_id": 5,
+      "district_name": "Cercado",
+      "category_name": "Pizzería",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 17,
+      "name": "Café Valenzuela",
+      "description": "El café más antiguo de Arequipa, fundado en 1914. Sus tejas arequipeñas, queso helado y chocolates son los souvenirs gastronómicos de la ciudad.",
+      "address": "Calle Moral 114",
+      "phone": "054-218798",
+      "image_url": "https://picsum.photos/seed/cafe-clasico-1914-arequipa/600/400",
+      "opening_time": "08:00",
+      "closing_time": "21:00",
+      "district_id": 1,
+      "category_id": 6,
+      "district_name": "Cercado",
+      "category_name": "Café",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 18,
+      "name": "Cafeto",
+      "description": "Café de especialidad con granos del Valle del Colca. Ambiente acogedor para trabajar o reunirse. Terraza con vista a los volcanes.",
+      "address": "Av. Bolognesi 245",
+      "phone": "054-287654",
+      "image_url": "https://picsum.photos/seed/cafe-especialidad-colca/600/400",
+      "opening_time": "07:30",
+      "closing_time": "20:00",
+      "district_id": 3,
+      "category_id": 6,
+      "district_name": "Cayma",
+      "category_name": "Café",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 19,
+      "name": "El Turko",
+      "description": "Cafetería con opciones de desayuno y almuerzo ligero. Muy popular entre estudiantes universitarios por su wifi rápido y precios cómodos.",
+      "address": "Calle San Francisco 304",
+      "phone": "054-219087",
+      "image_url": "https://picsum.photos/seed/cafeteria-estudiantes-wifi/600/400",
+      "opening_time": "07:00",
+      "closing_time": "22:00",
+      "district_id": 1,
+      "category_id": 6,
+      "district_name": "Cercado",
+      "category_name": "Café",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 20,
+      "name": "Brunch & Co.",
+      "description": "Moderna cafetería en Cerro Colorado especializada en brunch. Sus pancakes con manjar blanco arequipeño son un hit en redes sociales.",
+      "address": "C.C. El Quinde, Local 45",
+      "phone": "054-487321",
+      "image_url": "https://picsum.photos/seed/brunch-moderno-pancakes/600/400",
+      "opening_time": "08:00",
+      "closing_time": "18:00",
+      "district_id": 7,
+      "category_id": 6,
+      "district_name": "Cerro Colorado",
+      "category_name": "Café",
+      "created_at": "2024-01-01 00:00:00"
+    }
+  ],
+  "dishes": [
+    {
+      "id": 1,
+      "name": "Rocoto Relleno",
+      "description": "Rocoto arequipeño relleno de carne molida, cebolla, maní y pasas, gratinado con queso y acompañado de pastel de papa",
+      "price": 28,
+      "image_url": "https://picsum.photos/seed/rocoto-relleno-peru/600/400",
+      "restaurant_id": 1,
+      "restaurant_name": "La Nueva Palomino",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Chupe de Camarones",
+      "description": "Chowder cremoso elaborado con camarones del río Chili, papas, leche evaporada, queso fresco, ají colorado y huevo pochado",
+      "price": 52,
+      "image_url": "https://picsum.photos/seed/chupe-camarones-cremoso/600/400",
+      "restaurant_id": 1,
+      "restaurant_name": "La Nueva Palomino",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "name": "Adobo Arequipeño",
+      "description": "Cerdo marinado en chicha de jora, ají panca, vinagre y especias. Se sirve en caldo con pan de tres puntas",
+      "price": 32,
+      "image_url": "https://picsum.photos/seed/adobo-cerdo-chicha/600/400",
+      "restaurant_id": 1,
+      "restaurant_name": "La Nueva Palomino",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "name": "Ocopa Arequipeña",
+      "description": "Papa cocida bañada en salsa de ají mirasol, queso fresco, maní tostado, huacatay y galletas. Servida fría.",
+      "price": 22,
+      "image_url": "https://picsum.photos/seed/ocopa-papa-salsa/600/400",
+      "restaurant_id": 2,
+      "restaurant_name": "Sol de Mayo",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "name": "Solterito de Queso",
+      "description": "Ensalada de habas, choclo, queso fresco arequipeño, aceitunas negras, rocoto y hierbabuena",
+      "price": 18,
+      "image_url": "https://picsum.photos/seed/solterito-habas-queso/600/400",
+      "restaurant_id": 2,
+      "restaurant_name": "Sol de Mayo",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 6,
+      "name": "Chicharrón de Cerdo",
+      "description": "Costillas y pierna de cerdo fritas en su propia grasa hasta quedar crocantes. Se sirve con mote, zarza y tamales verdes",
+      "price": 38,
+      "image_url": "https://picsum.photos/seed/chicharron-cerdo-crocante/600/400",
+      "restaurant_id": 2,
+      "restaurant_name": "Sol de Mayo",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 7,
+      "name": "Adobo Dominguero",
+      "description": "El clásico desayuno arequipeño: caldo de cerdo con ají panca, muy demandado los domingos desde las 7am",
+      "price": 28,
+      "image_url": "https://picsum.photos/seed/adobo-domingo-caldo/600/400",
+      "restaurant_id": 3,
+      "restaurant_name": "La Capitana",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 8,
+      "name": "Pastel de Papa",
+      "description": "Capas de papa cocida con queso derretido y salsa de ají amarillo. Acompañamiento clásico del rocoto relleno.",
+      "price": 15,
+      "image_url": "https://picsum.photos/seed/pastel-papa-queso/600/400",
+      "restaurant_id": 3,
+      "restaurant_name": "La Capitana",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 9,
+      "name": "Cuy Chactado",
+      "description": "Cuy aplastado y frito en aceite de oliva hasta quedar crocante. Acompañado de papas nativas y ensalada criolla",
+      "price": 45,
+      "image_url": "https://picsum.photos/seed/cuy-chactado-frito/600/400",
+      "restaurant_id": 4,
+      "restaurant_name": "El Rancho",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 10,
+      "name": "Espesado de Camarones",
+      "description": "Sopa espesa con camarones del río Chili, maíz choclo molido, queso y hierbabuena. Plato de temporada.",
+      "price": 48,
+      "image_url": "https://picsum.photos/seed/espesado-camarones-sopa/600/400",
+      "restaurant_id": 4,
+      "restaurant_name": "El Rancho",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 11,
+      "name": "Timpusca",
+      "description": "Caldo de cabeza de res con papas, habas, yuca y hierbabuena. Plato de reconfortante en los días fríos de Arequipa.",
+      "price": 25,
+      "image_url": "https://picsum.photos/seed/caldo-cabeza-res-timpusca/600/400",
+      "restaurant_id": 5,
+      "restaurant_name": "La Lucila",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 12,
+      "name": "Soltero de Habas",
+      "description": "Versión de la campiña con habas tiernas, queso mantecoso, aceitunas, tomate y ajíes frescos",
+      "price": 16,
+      "image_url": "https://picsum.photos/seed/habas-queso-ensalada/600/400",
+      "restaurant_id": 5,
+      "restaurant_name": "La Lucila",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 13,
+      "name": "Adobo con Pan de Tres Puntas",
+      "description": "El desayuno dominical por excelencia: caldillo de cerdo con chicha de jora y pan artesanal horneado a leña",
+      "price": 30,
+      "image_url": "https://picsum.photos/seed/adobo-pan-tres-puntas/600/400",
+      "restaurant_id": 6,
+      "restaurant_name": "Tradiciones Arequipeñas",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 14,
+      "name": "Queso Helado",
+      "description": "Postre arequipeño helado a base de leche de coco, canela y menta. El sabor que todos recuerdan de Arequipa.",
+      "price": 8,
+      "image_url": "https://picsum.photos/seed/queso-helado-coco-menta/600/400",
+      "restaurant_id": 6,
+      "restaurant_name": "Tradiciones Arequipeñas",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 15,
+      "name": "Ceviche Mixto",
+      "description": "Corvina y mariscos frescos marinados en leche de tigre arequipeña con rocoto y ají limo. Servido con choclo y camote.",
+      "price": 42,
+      "image_url": "https://picsum.photos/seed/ceviche-mixto-corvina/600/400",
+      "restaurant_id": 7,
+      "restaurant_name": "El Muelle",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 16,
+      "name": "Leche de Tigre",
+      "description": "La esencia del ceviche servida como shots. Mezcla del jugo cítrico de la marinada con ají, rocoto y pulpito.",
+      "price": 18,
+      "image_url": "https://picsum.photos/seed/leche-tigre-shot-aji/600/400",
+      "restaurant_id": 7,
+      "restaurant_name": "El Muelle",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 17,
+      "name": "Tiradito de Lenguado",
+      "description": "Finas láminas de lenguado fresco con salsa de ají amarillo y un toque de jengibre y sésamo",
+      "price": 38,
+      "image_url": "https://picsum.photos/seed/tiradito-lenguado-laminas/600/400",
+      "restaurant_id": 7,
+      "restaurant_name": "El Muelle",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 18,
+      "name": "Tiradito con Salsa de Ocopa",
+      "description": "Innovación arequipeña: tiradito de pejerrey bañado en salsa de ocopa con maní y huacatay",
+      "price": 35,
+      "image_url": "https://picsum.photos/seed/tiradito-ocopa-pejerrey/600/400",
+      "restaurant_id": 8,
+      "restaurant_name": "Mar y Tierra",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 19,
+      "name": "Arroz con Mariscos",
+      "description": "Arroz cremoso tipo risotto con camarones, almejas y pulpo. Versión fusión de la cocina arequipeña.",
+      "price": 40,
+      "image_url": "https://picsum.photos/seed/arroz-mariscos-risotto/600/400",
+      "restaurant_id": 8,
+      "restaurant_name": "Mar y Tierra",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 20,
+      "name": "Ceviche de Camarones",
+      "description": "Camarones del río Chili marinados en limón con rocoto, cebolla morada y hierbabuena. Sabor 100% arequipeño",
+      "price": 35,
+      "image_url": "https://picsum.photos/seed/ceviche-camarones-rio/600/400",
+      "restaurant_id": 9,
+      "restaurant_name": "La Cevichería del Puerto",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 21,
+      "name": "Pollo a la Brasa (1/2)",
+      "description": "Medio pollo a la brasa marinado en hierbas locales. Acompañado de papas fritas, ensalada y dos salsas.",
+      "price": 32,
+      "image_url": "https://picsum.photos/seed/pollo-brasa-medio-papas/600/400",
+      "restaurant_id": 10,
+      "restaurant_name": "Don Pollo",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 22,
+      "name": "Pollo a la Brasa (1/4)",
+      "description": "Cuarto de pollo a la brasa, ideal para comer solo. Incluye papas fritas y ensalada.",
+      "price": 18,
+      "image_url": "https://picsum.photos/seed/pollo-brasa-cuarto-ensalada/600/400",
+      "restaurant_id": 10,
+      "restaurant_name": "Don Pollo",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 23,
+      "name": "Pollo a la Brasa con Leña",
+      "description": "Pollo entero asado a fuego lento con leña de eucalipto. El humo le da un sabor ahumado único.",
+      "price": 55,
+      "image_url": "https://picsum.photos/seed/pollo-lena-eucalipto-ahumado/600/400",
+      "restaurant_id": 11,
+      "restaurant_name": "El Brasero",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 24,
+      "name": "Combo Familiar",
+      "description": "Pollo entero, dos porciones de papas fritas, ensalada grande y cuatro gaseosas",
+      "price": 65,
+      "image_url": "https://picsum.photos/seed/combo-familiar-gaseosa/600/400",
+      "restaurant_id": 12,
+      "restaurant_name": "Pollo Real",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 25,
+      "name": "Arroz Chaufa Especial",
+      "description": "Arroz saltado al wok con pollo, chancho, mariscos, huevo y verduras. El chaufa de casa, con receta familiar de 40 años",
+      "price": 28,
+      "image_url": "https://picsum.photos/seed/chaufa-arroz-wok/600/400",
+      "restaurant_id": 13,
+      "restaurant_name": "China House",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 26,
+      "name": "Lomo Saltado Chifa",
+      "description": "Versión chifa del clásico lomo saltado: tiras de res con pimientos, tomate y sillao, sobre arroz blanco",
+      "price": 32,
+      "image_url": "https://picsum.photos/seed/lomo-saltado-chifa-sillao/600/400",
+      "restaurant_id": 13,
+      "restaurant_name": "China House",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 27,
+      "name": "Dim Sum (6 piezas)",
+      "description": "Seis dumplings de camarón y cerdo al vapor. Los domingos se sirven en carrito tradicional.",
+      "price": 22,
+      "image_url": "https://picsum.photos/seed/dim-sum-dumplings-vapor/600/400",
+      "restaurant_id": 13,
+      "restaurant_name": "China House",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 28,
+      "name": "Chaufa con Quinua",
+      "description": "Fusión arequipeña: arroz chaufa con quinua blanca del altiplano, incorporando sabores andinos al wok",
+      "price": 30,
+      "image_url": "https://picsum.photos/seed/chaufa-quinua-andino/600/400",
+      "restaurant_id": 14,
+      "restaurant_name": "Dragón de Oro",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 29,
+      "name": "Pizza de Queso Cayma",
+      "description": "Pizza artesanal con queso fresco de Cayma, tomates cherry, albahaca y aceite de oliva. Masa madre de 48 horas.",
+      "price": 38,
+      "image_url": "https://picsum.photos/seed/pizza-queso-tomate-albahaca/600/400",
+      "restaurant_id": 15,
+      "restaurant_name": "Pizzería Quattro",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 30,
+      "name": "Pizza Arequipeña",
+      "description": "Base de tomate con queso, salchicha huachana, rocoto confitado y aceitunas de Yauca",
+      "price": 42,
+      "image_url": "https://picsum.photos/seed/pizza-rocoto-aceitunas/600/400",
+      "restaurant_id": 15,
+      "restaurant_name": "Pizzería Quattro",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 31,
+      "name": "Pizza Margarita",
+      "description": "La clásica italiana con salsa de tomate, mozzarella y albahaca fresca. Simple y perfecta.",
+      "price": 32,
+      "image_url": "https://picsum.photos/seed/pizza-margarita-italiana/600/400",
+      "restaurant_id": 16,
+      "restaurant_name": "La Piazza",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 32,
+      "name": "Pasta al Rocoto",
+      "description": "Fusión italo-arequipeña: pasta fresca con salsa de rocoto, crema de leche y queso parmesano.",
+      "price": 28,
+      "image_url": "https://picsum.photos/seed/pasta-rocoto-crema/600/400",
+      "restaurant_id": 16,
+      "restaurant_name": "La Piazza",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 33,
+      "name": "Teja Arequipeña",
+      "description": "El dulce más famoso de Arequipa: nuez o pecana bañada en manjar blanco y cubierta con fondant. Desde 1914.",
+      "price": 6,
+      "image_url": "https://picsum.photos/seed/teja-manjar-fondant/600/400",
+      "restaurant_id": 17,
+      "restaurant_name": "Café Valenzuela",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 34,
+      "name": "Queso Helado Artesanal",
+      "description": "El postre arequipeño por excelencia, elaborado con leche de coco y canela desde la receta original de 1914.",
+      "price": 8,
+      "image_url": "https://picsum.photos/seed/queso-helado-artesanal-coco/600/400",
+      "restaurant_id": 17,
+      "restaurant_name": "Café Valenzuela",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 35,
+      "name": "Café Pasado con Leche",
+      "description": "Café de altura preparado por goteo lento y servido con leche caliente y un trozo de bizcochuelo casero",
+      "price": 12,
+      "image_url": "https://picsum.photos/seed/cafe-pasado-goteo-bizcochuelo/600/400",
+      "restaurant_id": 17,
+      "restaurant_name": "Café Valenzuela",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 36,
+      "name": "Cappuccino de Colca",
+      "description": "Cappuccino elaborado con café de altura del Valle del Colca, con crema de leche arequipeña y canela",
+      "price": 14,
+      "image_url": "https://picsum.photos/seed/cappuccino-espuma-canela/600/400",
+      "restaurant_id": 18,
+      "restaurant_name": "Cafeto",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 37,
+      "name": "Tostada con Palta",
+      "description": "Pan artesanal de masa madre con palta de Camaná, huevo poche y sal de maras",
+      "price": 18,
+      "image_url": "https://picsum.photos/seed/tostada-palta-huevo-poche/600/400",
+      "restaurant_id": 18,
+      "restaurant_name": "Cafeto",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 38,
+      "name": "Desayuno Universitario",
+      "description": "Café con leche, jugo de naranja, dos tostadas con mantequilla y mermelada de fresa",
+      "price": 15,
+      "image_url": "https://picsum.photos/seed/desayuno-cafe-tostada-jugo/600/400",
+      "restaurant_id": 19,
+      "restaurant_name": "El Turko",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 39,
+      "name": "Pancakes con Manjar",
+      "description": "Torre de tres pancakes esponjosos cubiertos con manjar blanco arequipeño, fresas y helado de vainilla",
+      "price": 22,
+      "image_url": "https://picsum.photos/seed/pancakes-manjar-fresas/600/400",
+      "restaurant_id": 20,
+      "restaurant_name": "Brunch & Co.",
+      "created_at": "2024-01-01 00:00:00"
+    },
+    {
+      "id": 40,
+      "name": "Huevos Benedictinos",
+      "description": "Huevos pochados sobre pan inglés tostado con jamón serrano y salsa holandesa. Brunch de autor.",
+      "price": 28,
+      "image_url": "https://picsum.photos/seed/huevos-benedictinos-holandes/600/400",
+      "restaurant_id": 20,
+      "restaurant_name": "Brunch & Co.",
+      "created_at": "2024-01-01 00:00:00"
+    }
+  ]
+}
