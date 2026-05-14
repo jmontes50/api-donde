@@ -1,52 +1,52 @@
 const service = require('../services/categories.service');
 const { requireString, requireId, optional } = require('../utils/validators');
 
-function list(req, res, next) {
+async function list(req, res, next) {
   try {
-    const categories = service.findAll();
+    const categories = await service.findAll();
     res.json({ data: categories });
   } catch (err) {
     next(err);
   }
 }
 
-function detail(req, res, next) {
+async function detail(req, res, next) {
   try {
     const id = requireId(req.params.id, 'id');
-    const category = service.findById(id);
+    const category = await service.findById(id);
     res.json({ data: category });
   } catch (err) {
     next(err);
   }
 }
 
-function create(req, res, next) {
+async function create(req, res, next) {
   try {
     const name = requireString(req.body.name, 'name');
     const description = optional(req.body.description, (v) => requireString(v, 'description'));
-    const category = service.create({ name, description });
+    const category = await service.create({ name, description });
     res.status(201).json({ data: category });
   } catch (err) {
     next(err);
   }
 }
 
-function update(req, res, next) {
+async function update(req, res, next) {
   try {
     const id = requireId(req.params.id, 'id');
     const name = optional(req.body.name, (v) => requireString(v, 'name'));
     const description = req.body.description;
-    const category = service.update(id, { name, description });
+    const category = await service.update(id, { name, description });
     res.json({ data: category });
   } catch (err) {
     next(err);
   }
 }
 
-function remove(req, res, next) {
+async function remove(req, res, next) {
   try {
     const id = requireId(req.params.id, 'id');
-    service.remove(id);
+    await service.remove(id);
     res.status(204).send();
   } catch (err) {
     next(err);

@@ -5,24 +5,31 @@ const HttpError = require('../utils/http-errors');
 
 const SALT_ROUNDS = 10;
 
-function register({ username, email, password }) {
-  // Verificar si el email o username ya existen
-  const existing = db.prepare('SELECT id FROM users WHERE email = ? OR username = ?').get(email, username);
-  if (existing) {
+async function register({ username, email, password }) {
+  const existing = await db.execute({
+    sql: 'SELECT id FROM users WHERE email = ? OR username = ?',
+    args: [email, username],
+  });
+  if (existing.rows[0]) {
     throw new HttpError(409, 'El email o nombre de usuario ya están registrados');
   }
 
   const hashedPassword = bcrypt.hashSync(password, SALT_ROUNDS);
 
-  const result = db.prepare(
-    'INSERT INTO users (username, email, password) VALUES (?, ?, ?)'
-  ).run(username, email, hashedPassword);
+  const result = await db.execute({
+    sql: 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+    args: [username, email, hashedPassword],
+  });
 
-  return { id: result.lastInsertRowid, username, email };
+  return { id: Number(result.lastInsertRowid), username, email };
 }
 
-function login({ email, password }) {
-  const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
+async function login({ email, password }) {
+  const result = await db.execute({
+    sql: 'SELECT * FROM users WHERE email = ?',
+    args: [email],
+  });
+  const user = result.rows[0];
 
   if (!user) {
     // Mensaje genérico para no revelar si el email existe o no

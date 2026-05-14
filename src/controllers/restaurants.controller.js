@@ -2,14 +2,14 @@ const service = require('../services/restaurants.service');
 const { requireString, requireNumber, requireId, optional } = require('../utils/validators');
 const { parsePagination, buildPaginationResponse } = require('../utils/pagination');
 
-function list(req, res, next) {
+async function list(req, res, next) {
   try {
     const { page, limit, offset } = parsePagination(req.query);
     const search = req.query.search || null;
     const district = req.query.district ? requireId(req.query.district, 'district') : null;
     const category = req.query.category ? requireId(req.query.category, 'category') : null;
 
-    const { data, total } = service.findAll({ page, limit, offset, search, district, category });
+    const { data, total } = await service.findAll({ page, limit, offset, search, district, category });
     const pagination = buildPaginationResponse(total, page, limit);
 
     res.json({ data, pagination });
@@ -18,17 +18,17 @@ function list(req, res, next) {
   }
 }
 
-function detail(req, res, next) {
+async function detail(req, res, next) {
   try {
     const id = requireId(req.params.id, 'id');
-    const restaurant = service.findById(id);
+    const restaurant = await service.findById(id);
     res.json({ data: restaurant });
   } catch (err) {
     next(err);
   }
 }
 
-function create(req, res, next) {
+async function create(req, res, next) {
   try {
     const name = requireString(req.body.name, 'name');
     const address = requireString(req.body.address, 'address');
@@ -47,14 +47,14 @@ function create(req, res, next) {
       return requireTime(v, 'closing_time');
     });
 
-    const restaurant = service.create({ name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id });
+    const restaurant = await service.create({ name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id });
     res.status(201).json({ data: restaurant });
   } catch (err) {
     next(err);
   }
 }
 
-function update(req, res, next) {
+async function update(req, res, next) {
   try {
     const id = requireId(req.params.id, 'id');
 
@@ -74,17 +74,17 @@ function update(req, res, next) {
       return requireTime(v, 'closing_time');
     });
 
-    const restaurant = service.update(id, { name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id });
+    const restaurant = await service.update(id, { name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id });
     res.json({ data: restaurant });
   } catch (err) {
     next(err);
   }
 }
 
-function remove(req, res, next) {
+async function remove(req, res, next) {
   try {
     const id = requireId(req.params.id, 'id');
-    service.remove(id);
+    await service.remove(id);
     res.status(204).send();
   } catch (err) {
     next(err);

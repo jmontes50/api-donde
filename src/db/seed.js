@@ -13,28 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const db = require('./database');
 
-// Aplicar el schema (crea las tablas si no existen)
-const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
-db.exec(schema);
-
-// Limpiar todas las tablas en orden (respetando FK)
-db.exec(`
-  DELETE FROM dishes;
-  DELETE FROM restaurants;
-  DELETE FROM categories;
-  DELETE FROM districts;
-  DELETE FROM users;
-  DELETE FROM sqlite_sequence WHERE name IN ('dishes','restaurants','categories','districts','users');
-`);
-
-// ── 1. Usuario admin ──────────────────────────────────────────────────────────
-const hashedPassword = bcrypt.hashSync('admin1234', 10);
-db.prepare(
-  'INSERT INTO users (username, email, password) VALUES (?, ?, ?)'
-).run('admin', 'admin@gastro.com', hashedPassword);
-
-// ── 2. Distritos de Arequipa ──────────────────────────────────────────────────
-const insertDistrict = db.prepare('INSERT INTO districts (name, description) VALUES (?, ?)');
+// ── Datos ─────────────────────────────────────────────────────────────────────
 
 const districts = [
   ['Cercado', 'Centro histórico de Arequipa, declarado Patrimonio de la Humanidad. Corazón cultural y gastronómico de la ciudad.'],
@@ -47,15 +26,6 @@ const districts = [
   ['José Luis Bustamante y Rivero', 'Distrito residencial del sur con restaurantes familiares, pollerías y cevicherías de barrio.'],
 ];
 
-const districtRows = {};
-for (const [name, description] of districts) {
-  const result = insertDistrict.run(name, description);
-  districtRows[name] = result.lastInsertRowid;
-}
-
-// ── 3. Categorías ─────────────────────────────────────────────────────────────
-const insertCategory = db.prepare('INSERT INTO categories (name, description) VALUES (?, ?)');
-
 const categories = [
   ['Picantería', 'Restaurantes tradicionales que sirven platos típicos arequipeños en ambiente familiar. Son el símbolo gastronómico de la región.'],
   ['Cevichería', 'Especialistas en ceviche y preparaciones a base de pescados y mariscos frescos del litoral peruano.'],
@@ -64,18 +34,6 @@ const categories = [
   ['Pizzería', 'Pizzerías artesanales e italianas adaptadas al gusto arequipeño, con ingredientes locales.'],
   ['Café', 'Cafeterías y cafés con opciones de desayuno, brunch, repostería y bebidas de especialidad.'],
 ];
-
-const categoryRows = {};
-for (const [name, description] of categories) {
-  const result = insertCategory.run(name, description);
-  categoryRows[name] = result.lastInsertRowid;
-}
-
-// ── 4. Restaurantes ───────────────────────────────────────────────────────────
-const insertRestaurant = db.prepare(`
-  INSERT INTO restaurants (name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-`);
 
 const restaurants = [
   // Picanterías
@@ -110,21 +68,6 @@ const restaurants = [
   ['El Turko', 'Cafetería con opciones de desayuno y almuerzo ligero. Muy popular entre estudiantes universitarios por su wifi rápido y precios cómodos.', 'Calle San Francisco 304', '054-219087', 'https://placehold.co/600x400?text=El+Turko', '07:00', '22:00', 'Cercado', 'Café'],
   ['Brunch & Co.', 'Moderna cafetería en Cerro Colorado especializada en brunch. Sus pancakes con manjar blanco arequipeño son un hit en redes sociales.', 'C.C. El Quinde, Local 45', '054-487321', 'https://placehold.co/600x400?text=Brunch+Co', '08:00', '18:00', 'Cerro Colorado', 'Café'],
 ];
-
-const restaurantIds = {};
-for (const [name, description, address, phone, image_url, opening_time, closing_time, districtName, categoryName] of restaurants) {
-  const result = insertRestaurant.run(
-    name, description, address, phone, image_url, opening_time, closing_time,
-    districtRows[districtName], categoryRows[categoryName]
-  );
-  restaurantIds[name] = result.lastInsertRowid;
-}
-
-// ── 5. Platos ─────────────────────────────────────────────────────────────────
-const insertDish = db.prepare(`
-  INSERT INTO dishes (name, description, price, image_url, restaurant_id)
-  VALUES (?, ?, ?, ?, ?)
-`);
 
 const dishes = [
   // La Nueva Palomino
@@ -208,14 +151,85 @@ const dishes = [
   ['Huevos Benedictinos', 'Huevos pochados sobre pan inglés tostado con jamón serrano y salsa holandesa. Brunch de autor.', 28, 'https://placehold.co/600x400?text=Huevos+Benedict', 'Brunch & Co.'],
 ];
 
-for (const [name, description, price, image_url, restaurantName] of dishes) {
-  insertDish.run(name, description, price, image_url, restaurantIds[restaurantName]);
+// ── Seed ──────────────────────────────────────────────────────────────────────
+
+async function seed() {
+  // Aplicar el schema ejecutando cada sentencia por separado
+  const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
+  const statements = schema.split(';').map(s => s.trim()).filter(s => s.length > 0);
+  for (const sql of statements) {
+    await db.execute(sql);
+  }
+
+  // Limpiar todas las tablas en orden (respetando FK)
+  await db.batch([
+    { sql: 'DELETE FROM dishes', args: [] },
+    { sql: 'DELETE FROM restaurants', args: [] },
+    { sql: 'DELETE FROM categories', args: [] },
+    { sql: 'DELETE FROM districts', args: [] },
+    { sql: 'DELETE FROM users', args: [] },
+  ], 'write');
+
+  // Resetear contadores de autoincrement (ignorar si la tabla aún no existe)
+  try {
+    await db.execute("DELETE FROM sqlite_sequence WHERE name IN ('dishes','restaurants','categories','districts','users')");
+  } catch (_) {}
+
+  // ── 1. Usuario admin ────────────────────────────────────────────────────────
+  const hashedPassword = bcrypt.hashSync('admin1234', 10);
+  await db.execute({
+    sql: 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+    args: ['admin', 'admin@gastro.com', hashedPassword],
+  });
+
+  // ── 2. Distritos ────────────────────────────────────────────────────────────
+  const districtIds = {};
+  for (const [name, description] of districts) {
+    const result = await db.execute({
+      sql: 'INSERT INTO districts (name, description) VALUES (?, ?)',
+      args: [name, description],
+    });
+    districtIds[name] = Number(result.lastInsertRowid);
+  }
+
+  // ── 3. Categorías ───────────────────────────────────────────────────────────
+  const categoryIds = {};
+  for (const [name, description] of categories) {
+    const result = await db.execute({
+      sql: 'INSERT INTO categories (name, description) VALUES (?, ?)',
+      args: [name, description],
+    });
+    categoryIds[name] = Number(result.lastInsertRowid);
+  }
+
+  // ── 4. Restaurantes ─────────────────────────────────────────────────────────
+  const restaurantIds = {};
+  for (const [name, description, address, phone, image_url, opening_time, closing_time, districtName, categoryName] of restaurants) {
+    const result = await db.execute({
+      sql: `INSERT INTO restaurants (name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      args: [name, description, address, phone, image_url, opening_time, closing_time, districtIds[districtName], categoryIds[categoryName]],
+    });
+    restaurantIds[name] = Number(result.lastInsertRowid);
+  }
+
+  // ── 5. Platos ───────────────────────────────────────────────────────────────
+  for (const [name, description, price, image_url, restaurantName] of dishes) {
+    await db.execute({
+      sql: 'INSERT INTO dishes (name, description, price, image_url, restaurant_id) VALUES (?, ?, ?, ?, ?)',
+      args: [name, description, price, image_url, restaurantIds[restaurantName]],
+    });
+  }
+
+  console.log('\n✅ Seed completado:');
+  console.log(`   1 usuario admin (admin@gastro.com / admin1234)`);
+  console.log(`   ${districts.length} distritos de Arequipa`);
+  console.log(`   ${categories.length} categorías`);
+  console.log(`   ${restaurants.length} restaurantes`);
+  console.log(`   ${dishes.length} platos\n`);
 }
 
-// ── Resumen ───────────────────────────────────────────────────────────────────
-console.log('\n✅ Seed completado:');
-console.log(`   1 usuario admin (admin@gastro.com / admin1234)`);
-console.log(`   ${districts.length} distritos de Arequipa`);
-console.log(`   ${categories.length} categorías`);
-console.log(`   ${restaurants.length} restaurantes`);
-console.log(`   ${dishes.length} platos\n`);
+seed().catch((err) => {
+  console.error('❌ Error en seed:', err.message);
+  process.exit(1);
+});
