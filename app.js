@@ -48,10 +48,10 @@ app.use('/api/restaurants', restaurantsRoutes);
 app.use('/api/dishes', dishesRoutes);
 
 // Health check — útil para verificar que la API y la BD responden tras el deploy
-app.get('/api/health', (req, res) => {
+const db = require('./src/db/database');
+app.get('/api/health', async (req, res) => {
   try {
-    const db = require('./src/db/database');
-    db.prepare('SELECT 1').get();
+    await db.execute('SELECT 1');
     res.json({
       status: 'ok',
       uptime: Math.round(process.uptime() * 100) / 100,
