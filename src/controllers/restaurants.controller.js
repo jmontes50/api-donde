@@ -1,5 +1,5 @@
 const service = require('../services/restaurants.service');
-const { requireString, requireNumber, requireId, optional } = require('../utils/validators');
+const { requireString, requireNumber, requireId, requireCoord, optional } = require('../utils/validators');
 const { parsePagination, buildPaginationResponse } = require('../utils/pagination');
 
 function list(req, res, next) {
@@ -46,8 +46,10 @@ function create(req, res, next) {
       const { requireTime } = require('../utils/validators');
       return requireTime(v, 'closing_time');
     });
+    const lat = optional(req.body.lat, (v) => requireCoord(v, 'lat', 'lat'));
+    const lng = optional(req.body.lng, (v) => requireCoord(v, 'lng', 'lng'));
 
-    const restaurant = service.create({ name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id });
+    const restaurant = service.create({ name, description, address, phone, image_url, opening_time, closing_time, lat, lng, district_id, category_id });
     res.status(201).json({ data: restaurant });
   } catch (err) {
     next(err);
@@ -73,8 +75,10 @@ function update(req, res, next) {
       const { requireTime } = require('../utils/validators');
       return requireTime(v, 'closing_time');
     });
+    const lat = optional(req.body.lat, (v) => requireCoord(v, 'lat', 'lat'));
+    const lng = optional(req.body.lng, (v) => requireCoord(v, 'lng', 'lng'));
 
-    const restaurant = service.update(id, { name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id });
+    const restaurant = service.update(id, { name, description, address, phone, image_url, opening_time, closing_time, lat, lng, district_id, category_id });
     res.json({ data: restaurant });
   } catch (err) {
     next(err);

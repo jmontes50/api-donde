@@ -73,48 +73,49 @@ for (const [name, description] of categories) {
 
 // ── 4. Restaurantes ───────────────────────────────────────────────────────────
 const insertRestaurant = db.prepare(`
-  INSERT INTO restaurants (name, description, address, phone, image_url, opening_time, closing_time, district_id, category_id)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO restaurants (name, description, address, phone, image_url, opening_time, closing_time, lat, lng, district_id, category_id)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
+// Columnas: name, description, address, phone, image_url, opening_time, closing_time, lat, lng, district, category
 const restaurants = [
   // Picanterías
-  ['La Nueva Palomino', 'Picantería tradicional con más de 50 años de historia, considerada una de las mejores de Arequipa. Sus rocoto relleno y chupe de camarones son legendarios.', 'Leoncio Prado 122', '054-252393', 'https://placehold.co/600x400?text=La+Nueva+Palomino', '12:00', '17:00', 'Yanahuara', 'Picantería'],
-  ['Sol de Mayo', 'Emblemática picantería en plena campiña de Yanahuara. Ambiente arequipeño auténtico con vista al Misti desde sus mesas al aire libre.', 'Jerusalén 207', '054-254148', 'https://placehold.co/600x400?text=Sol+de+Mayo', '11:00', '17:00', 'Yanahuara', 'Picantería'],
-  ['La Capitana', 'Picantería familiar reconocida por su adobo arequipeño y chicharrones. Funciona desde 1978 en el corazón de Sachaca.', 'Av. Fernandini 215', '054-271832', 'https://placehold.co/600x400?text=La+Capitana', '08:00', '16:00', 'Sachaca', 'Picantería'],
-  ['El Rancho', 'Picantería con amplio jardín, ideal para grupos. Especialidad en ocopa arequipeña y pastel de papa.', 'Calle Peral 301', '054-265410', 'https://placehold.co/600x400?text=El+Rancho', '11:30', '17:00', 'Sachaca', 'Picantería'],
-  ['La Lucila', 'Reconocida picantería del centro histórico. Ganadora de varios premios gastronómicos regionales por su sazón tradicional.', 'Calle Mercaderes 229', '054-213764', 'https://placehold.co/600x400?text=La+Lucila', '11:00', '16:00', 'Cercado', 'Picantería'],
-  ['Tradiciones Arequipeñas', 'Ambiente rústico con paredes de sillar blanco. Sirven el desayuno tradicional: adobo con pan de tres puntas todos los domingos.', 'Av. Dolores 111', '054-289543', 'https://placehold.co/600x400?text=Tradiciones', '07:00', '15:00', 'José Luis Bustamante y Rivero', 'Picantería'],
+  ['La Nueva Palomino', 'Picantería tradicional con más de 50 años de historia, considerada una de las mejores de Arequipa. Sus rocoto relleno y chupe de camarones son legendarios.', 'Leoncio Prado 122', '054-252393', 'https://placehold.co/600x400?text=La+Nueva+Palomino', '12:00', '17:00', -16.3978, -71.5504, 'Yanahuara', 'Picantería'],
+  ['Sol de Mayo', 'Emblemática picantería en plena campiña de Yanahuara. Ambiente arequipeño auténtico con vista al Misti desde sus mesas al aire libre.', 'Jerusalén 207', '054-254148', 'https://placehold.co/600x400?text=Sol+de+Mayo', '11:00', '17:00', -16.3993, -71.5511, 'Yanahuara', 'Picantería'],
+  ['La Capitana', 'Picantería familiar reconocida por su adobo arequipeño y chicharrones. Funciona desde 1978 en el corazón de Sachaca.', 'Av. Fernandini 215', '054-271832', 'https://placehold.co/600x400?text=La+Capitana', '08:00', '16:00', -16.4282, -71.5731, 'Sachaca', 'Picantería'],
+  ['El Rancho', 'Picantería con amplio jardín, ideal para grupos. Especialidad en ocopa arequipeña y pastel de papa.', 'Calle Peral 301', '054-265410', 'https://placehold.co/600x400?text=El+Rancho', '11:30', '17:00', -16.4270, -71.5718, 'Sachaca', 'Picantería'],
+  ['La Lucila', 'Reconocida picantería del centro histórico. Ganadora de varios premios gastronómicos regionales por su sazón tradicional.', 'Calle Mercaderes 229', '054-213764', 'https://placehold.co/600x400?text=La+Lucila', '11:00', '16:00', -16.4082, -71.5381, 'Cercado', 'Picantería'],
+  ['Tradiciones Arequipeñas', 'Ambiente rústico con paredes de sillar blanco. Sirven el desayuno tradicional: adobo con pan de tres puntas todos los domingos.', 'Av. Dolores 111', '054-289543', 'https://placehold.co/600x400?text=Tradiciones', '07:00', '15:00', -16.4312, -71.5201, 'José Luis Bustamante y Rivero', 'Picantería'],
 
   // Cevicherías
-  ['El Muelle', 'Cevichería de referencia en Arequipa. Traen ingredientes frescos tres veces por semana directamente desde el puerto de Camaná.', 'Av. Ejército 406', '054-231847', 'https://placehold.co/600x400?text=El+Muelle', '11:00', '17:00', 'Yanahuara', 'Cevichería'],
-  ['Mar y Tierra', 'Fusión entre los sabores del mar y la cocina arequipeña. Su tiradito de pejerrey con salsa de ocopa es único en la ciudad.', 'Calle Melgar 112', '054-208931', 'https://placehold.co/600x400?text=Mar+y+Tierra', '12:00', '17:00', 'Cercado', 'Cevichería'],
-  ['La Cevichería del Puerto', 'Local popular en Miraflores con precios accesibles. Conocida por sus porciones generosas y leche de tigre potente.', 'Av. Mariscal Castilla 780', '054-432156', 'https://placehold.co/600x400?text=Cevicheria+del+Puerto', '11:30', '16:30', 'Miraflores', 'Cevichería'],
+  ['El Muelle', 'Cevichería de referencia en Arequipa. Traen ingredientes frescos tres veces por semana directamente desde el puerto de Camaná.', 'Av. Ejército 406', '054-231847', 'https://placehold.co/600x400?text=El+Muelle', '11:00', '17:00', -16.3965, -71.5484, 'Yanahuara', 'Cevichería'],
+  ['Mar y Tierra', 'Fusión entre los sabores del mar y la cocina arequipeña. Su tiradito de pejerrey con salsa de ocopa es único en la ciudad.', 'Calle Melgar 112', '054-208931', 'https://placehold.co/600x400?text=Mar+y+Tierra', '12:00', '17:00', -16.4070, -71.5392, 'Cercado', 'Cevichería'],
+  ['La Cevichería del Puerto', 'Local popular en Miraflores con precios accesibles. Conocida por sus porciones generosas y leche de tigre potente.', 'Av. Mariscal Castilla 780', '054-432156', 'https://placehold.co/600x400?text=Cevicheria+del+Puerto', '11:30', '16:30', -16.4165, -71.5219, 'Miraflores', 'Cevichería'],
 
   // Pollerías
-  ['Don Pollo', 'Pollería familiar con más de 30 años en el mercado arequipeño. Su pollo a la brasa con papas fritas y ensalada es el favorito del barrio.', 'Av. Aviación 567', '054-471230', 'https://placehold.co/600x400?text=Don+Pollo', '12:00', '22:00', 'Cerro Colorado', 'Pollería'],
-  ['El Brasero', 'Pollería con horno de leña tradicional. El aroma que sale a la calle a las 11am es imposible de ignorar.', 'Calle Alfonso Ugarte 234', '054-455678', 'https://placehold.co/600x400?text=El+Brasero', '11:00', '22:00', 'Paucarpata', 'Pollería'],
-  ['Pollo Real', 'Cadena local arequipeña con tres locales en la ciudad. Relación calidad-precio muy valorada por las familias del distrito.', 'Av. Los Incas 890', '054-398123', 'https://placehold.co/600x400?text=Pollo+Real', '12:00', '23:00', 'José Luis Bustamante y Rivero', 'Pollería'],
+  ['Don Pollo', 'Pollería familiar con más de 30 años en el mercado arequipeño. Su pollo a la brasa con papas fritas y ensalada es el favorito del barrio.', 'Av. Aviación 567', '054-471230', 'https://placehold.co/600x400?text=Don+Pollo', '12:00', '22:00', -16.3689, -71.5601, 'Cerro Colorado', 'Pollería'],
+  ['El Brasero', 'Pollería con horno de leña tradicional. El aroma que sale a la calle a las 11am es imposible de ignorar.', 'Calle Alfonso Ugarte 234', '054-455678', 'https://placehold.co/600x400?text=El+Brasero', '11:00', '22:00', -16.4203, -71.5076, 'Paucarpata', 'Pollería'],
+  ['Pollo Real', 'Cadena local arequipeña con tres locales en la ciudad. Relación calidad-precio muy valorada por las familias del distrito.', 'Av. Los Incas 890', '054-398123', 'https://placehold.co/600x400?text=Pollo+Real', '12:00', '23:00', -16.4289, -71.5185, 'José Luis Bustamante y Rivero', 'Pollería'],
 
   // Chifas
-  ['China House', 'Chifa de segunda generación, fundado por la familia Wong. Ambiente tradicional con mesas redondas y dim sum los domingos.', 'Calle San José 145', '054-223456', 'https://placehold.co/600x400?text=China+House', '12:00', '22:00', 'Cercado', 'Chifa'],
-  ['Dragón de Oro', 'Fusión chino-arequipeña que incorpora ingredientes locales como el rocoto y la quinua en platos clásicos del chifa.', 'Av. Pumacahua 678', '054-381234', 'https://placehold.co/600x400?text=Dragon+de+Oro', '11:30', '22:30', 'Cayma', 'Chifa'],
+  ['China House', 'Chifa de segunda generación, fundado por la familia Wong. Ambiente tradicional con mesas redondas y dim sum los domingos.', 'Calle San José 145', '054-223456', 'https://placehold.co/600x400?text=China+House', '12:00', '22:00', -16.4091, -71.5362, 'Cercado', 'Chifa'],
+  ['Dragón de Oro', 'Fusión chino-arequipeña que incorpora ingredientes locales como el rocoto y la quinua en platos clásicos del chifa.', 'Av. Pumacahua 678', '054-381234', 'https://placehold.co/600x400?text=Dragon+de+Oro', '11:30', '22:30', -16.3821, -71.5528, 'Cayma', 'Chifa'],
 
   // Pizzerías
-  ['Pizzería Quattro', 'Pizzería artesanal con horno de piedra importado de Italia. Sus ingredientes locales (queso de Cayma, orégano de Cotahuasi) le dan un sabor único.', 'Calle Álvarez Thomas 321', '054-251890', 'https://placehold.co/600x400?text=Quattro', '18:00', '23:00', 'Yanahuara', 'Pizzería'],
-  ['La Piazza', 'Ambiente italiano en el centro histórico. Perfecta para cenas con vista a la Plaza de Armas después de un día de turismo.', 'Portal de Flores 142', '054-201234', 'https://placehold.co/600x400?text=La+Piazza', '12:00', '23:00', 'Cercado', 'Pizzería'],
+  ['Pizzería Quattro', 'Pizzería artesanal con horno de piedra importado de Italia. Sus ingredientes locales (queso de Cayma, orégano de Cotahuasi) le dan un sabor único.', 'Calle Álvarez Thomas 321', '054-251890', 'https://placehold.co/600x400?text=Quattro', '18:00', '23:00', -16.3985, -71.5497, 'Yanahuara', 'Pizzería'],
+  ['La Piazza', 'Ambiente italiano en el centro histórico. Perfecta para cenas con vista a la Plaza de Armas después de un día de turismo.', 'Portal de Flores 142', '054-201234', 'https://placehold.co/600x400?text=La+Piazza', '12:00', '23:00', -16.4080, -71.5370, 'Cercado', 'Pizzería'],
 
   // Cafés
-  ['Café Valenzuela', 'El café más antiguo de Arequipa, fundado en 1914. Sus tejas arequipeñas, queso helado y chocolates son los souvenirs gastronómicos de la ciudad.', 'Calle Moral 114', '054-218798', 'https://placehold.co/600x400?text=Cafe+Valenzuela', '08:00', '21:00', 'Cercado', 'Café'],
-  ['Cafeto', 'Café de especialidad con granos del Valle del Colca. Ambiente acogedor para trabajar o reunirse. Terraza con vista a los volcanes.', 'Av. Bolognesi 245', '054-287654', 'https://placehold.co/600x400?text=Cafeto', '07:30', '20:00', 'Cayma', 'Café'],
-  ['El Turko', 'Cafetería con opciones de desayuno y almuerzo ligero. Muy popular entre estudiantes universitarios por su wifi rápido y precios cómodos.', 'Calle San Francisco 304', '054-219087', 'https://placehold.co/600x400?text=El+Turko', '07:00', '22:00', 'Cercado', 'Café'],
-  ['Brunch & Co.', 'Moderna cafetería en Cerro Colorado especializada en brunch. Sus pancakes con manjar blanco arequipeño son un hit en redes sociales.', 'C.C. El Quinde, Local 45', '054-487321', 'https://placehold.co/600x400?text=Brunch+Co', '08:00', '18:00', 'Cerro Colorado', 'Café'],
+  ['Café Valenzuela', 'El café más antiguo de Arequipa, fundado en 1914. Sus tejas arequipeñas, queso helado y chocolates son los souvenirs gastronómicos de la ciudad.', 'Calle Moral 114', '054-218798', 'https://placehold.co/600x400?text=Cafe+Valenzuela', '08:00', '21:00', -16.4063, -71.5368, 'Cercado', 'Café'],
+  ['Cafeto', 'Café de especialidad con granos del Valle del Colca. Ambiente acogedor para trabajar o reunirse. Terraza con vista a los volcanes.', 'Av. Bolognesi 245', '054-287654', 'https://placehold.co/600x400?text=Cafeto', '07:30', '20:00', -16.3803, -71.5512, 'Cayma', 'Café'],
+  ['El Turko', 'Cafetería con opciones de desayuno y almuerzo ligero. Muy popular entre estudiantes universitarios por su wifi rápido y precios cómodos.', 'Calle San Francisco 304', '054-219087', 'https://placehold.co/600x400?text=El+Turko', '07:00', '22:00', -16.4089, -71.5355, 'Cercado', 'Café'],
+  ['Brunch & Co.', 'Moderna cafetería en Cerro Colorado especializada en brunch. Sus pancakes con manjar blanco arequipeño son un hit en redes sociales.', 'C.C. El Quinde, Local 45', '054-487321', 'https://placehold.co/600x400?text=Brunch+Co', '08:00', '18:00', -16.3701, -71.5567, 'Cerro Colorado', 'Café'],
 ];
 
 const restaurantIds = {};
-for (const [name, description, address, phone, image_url, opening_time, closing_time, districtName, categoryName] of restaurants) {
+for (const [name, description, address, phone, image_url, opening_time, closing_time, lat, lng, districtName, categoryName] of restaurants) {
   const result = insertRestaurant.run(
-    name, description, address, phone, image_url, opening_time, closing_time,
+    name, description, address, phone, image_url, opening_time, closing_time, lat, lng,
     districtRows[districtName], categoryRows[categoryName]
   );
   restaurantIds[name] = result.lastInsertRowid;

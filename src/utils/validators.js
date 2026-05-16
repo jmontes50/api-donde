@@ -66,10 +66,23 @@ function requireTime(value, field) {
   return value.trim();
 }
 
+// Verifica que el valor sea una coordenada geográfica válida (lat: -90/90, lng: -180/180)
+function requireCoord(value, field, type) {
+  const num = Number(value);
+  if (value === undefined || value === null || value === '' || isNaN(num)) {
+    throw new HttpError(400, `El campo '${field}' debe ser un número`);
+  }
+  const { min, max } = type === 'lat' ? { min: -90, max: 90 } : { min: -180, max: 180 };
+  if (num < min || num > max) {
+    throw new HttpError(400, `El campo '${field}' debe estar entre ${min} y ${max}`);
+  }
+  return num;
+}
+
 // Si el valor está presente (no undefined/null), aplica el validador dado
 function optional(value, validatorFn) {
   if (value === undefined || value === null) return value;
   return validatorFn(value);
 }
 
-module.exports = { requireString, requireNumber, requireEmail, requireId, requireTime, optional };
+module.exports = { requireString, requireNumber, requireEmail, requireId, requireTime, requireCoord, optional };

@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS restaurants (
   image_url TEXT,
   opening_time TEXT,
   closing_time TEXT,
+  lat REAL,
+  lng REAL,
   district_id INTEGER NOT NULL,
   category_id INTEGER NOT NULL,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),

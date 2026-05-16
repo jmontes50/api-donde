@@ -34,6 +34,16 @@
  *           type: string
  *           nullable: true
  *           example: "17:00"
+ *         lat:
+ *           type: number
+ *           format: float
+ *           nullable: true
+ *           example: -16.3978
+ *         lng:
+ *           type: number
+ *           format: float
+ *           nullable: true
+ *           example: -71.5504
  *         district_id:
  *           type: integer
  *           example: 2
@@ -84,6 +94,14 @@
  *         closing_time:
  *           type: string
  *           example: "17:00"
+ *         lat:
+ *           type: number
+ *           format: float
+ *           example: -16.3978
+ *         lng:
+ *           type: number
+ *           format: float
+ *           example: -71.5504
  *         district_id:
  *           type: integer
  *           example: 2
